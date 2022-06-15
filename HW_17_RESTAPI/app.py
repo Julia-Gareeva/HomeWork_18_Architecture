@@ -21,10 +21,10 @@ genres_ns = api.namespace('genres')
 class Movie(db.Model):
     __tablename__ = 'movie'
     """Модель класса фильмы."""
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(255), unique=True, nullable=False)
-    description = db.Column(db.String(255), nullable=False)
-    trailer = db.Column(db.String(255), unique=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))
+    description = db.Column(db.String(255))
+    trailer = db.Column(db.String(255))
     year = db.Column(db.Integer)
     rating = db.Column(db.Float)
     genre_id = db.Column(db.Integer, db.ForeignKey("genre.id"))
@@ -51,7 +51,7 @@ class Director(db.Model):
     __tablename__ = 'director'
     """Модель класса режиссеров."""
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), unique=True, nullable=False)
+    name = db.Column(db.String(255))
 
 
 class DirectorSchema(Schema):
@@ -66,7 +66,7 @@ class Genre(db.Model):
     __tablename__ = 'genre'
     """Модель класса жанров."""
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), unique=True, nullable=False)
+    name = db.Column(db.String(255))
 
 
 class GenreSchema(Schema):
@@ -113,34 +113,20 @@ class MovieView(Resource):
 
     def put(self, mid):
         """Обновление фильма по идентификатору."""
-        data = request.get_json()
-        movie = Movie.query.get(mid)
-        movie.title = data['title']
-        movie.description = data['description']
-        movie.trailer = data['trailer']
-        movie.year = data['year']
-        movie.rating = data['rating']
-        movie.genre_id = data['genre_id']
-        movie.director_id = data['director_id']
-
-        db.session.add(movie)
-        db.session.commit()
-        db.session.close()
-        return "", 204
-
-        # movie = db.session.query(Movie).get(mid)
-        # req_json = request.json
-
-        # movie.title = req_json.get('title')
-        # movie.description = req_json.get('description')
-        # movie.trailer = req_json.get('trailer')
-        # movie.year = req_json.get('year')
-        # movie.rating = req_json.get('rating')
-        # movie.genre_id = req_json.get('genre_id')
-        # movie.director_id = req_json.get('director_id')
-        # db.session.add(movie)
-        # db.session.commit()
-        # return "", 204
+        # Первый вариант реализации метода по обновлению фильма.            # Второй вариант реализации метода по обновлению фильма.
+        movie = db.session.query(Movie).get(mid)                            # data = request.get_json()
+        req_json = request.json                                             # movie = Movie.query.get(mid)
+        movie.title = req_json.get('title')                                 # movie.title = data['title']
+        movie.description = req_json.get('description')                     # movie.description = data['description']
+        movie.trailer = req_json.get('trailer')                             # movie.trailer = data['trailer']
+        movie.year = req_json.get('year')                                   # movie.year = data['year']
+        movie.rating = req_json.get('rating')                               # movie.rating = data['rating']
+        movie.genre_id = req_json.get('genre_id')                           # movie.genre_id = data['genre_id']
+        movie.director_id = req_json.get('director_id')                     # movie.director_id = data['director_id']
+        db.session.add(movie)                                               # db.session.add(movie)
+        db.session.commit()                                                 # db.session.commit()
+        return "", 204                                                      # db.session.close()
+                                                                            # return "", 204
 
     def patch(self, mid):
         """Частичное обновление фильма."""
@@ -168,6 +154,98 @@ class MovieView(Resource):
         """Удаление фильма"""
         movie = Movie.query.get(mid)
         db.session.delete(movie)
+        db.session.commit()
+        return "", 204
+
+###____________________________________________________________________________
+
+
+"""Здесь регистрируем класс (Class-Based View) по пути /directors/ (эндпоинту)."""
+@directors_ns.route('/')
+class DirectorsView(Resource):
+    def get(self):
+        """Получение списка режиссеров."""
+        directors = Director.query.all()
+        return DirectorSchema(many=True).dump(directors), 200
+
+    def post(self):
+        """Создание режиссера, здесь мы получаем данные из запроса и создаем новую сущность в БД."""
+        data = request.get_json()
+        new_director = Director(**data)
+        db.session.add(new_director)
+        db.session.commit()
+        db.session.close()
+        return "", 201
+
+
+@directors_ns.route('/<int:rid>')
+class DirectorView(Resource):
+    def get(self, rid):
+        """Получение конкретного режиссера по идентификатору."""
+        director = Director.query.get(rid)
+        return DirectorSchema().dump(director), 200
+
+    def put(self, rid):
+        """Обновление режиссера по идентификатору."""
+        # Первый вариант реализации метода по обновлению режиссера.             # Второй вариант реализации метода по обновлению режиссера.
+        director = db.session.query(Director).get(rid)                          # data = request.get_json()
+        req_json = request.json                                                 # director = Director.query.get(rid)
+        director.name = req_json.get('name')                                    # director.name = data['name']
+        db.session.add(director)                                                # db.session.add(director)
+        db.session.commit()                                                     # db.session.commit()
+        return "", 204                                                          # db.session.close()
+                                                                                # return "", 204
+
+    def delete(self, rid):
+        """Удаление режиссера"""
+        director = Director.query.get(rid)
+        db.session.delete(director)
+        db.session.commit()
+        return "", 204
+
+###____________________________________________________________________________
+
+
+"""Здесь регистрируем класс (Class-Based View) по пути /genres/ (эндпоинту)."""
+@genres_ns.route('/')
+class GenresView(Resource):
+    def get(self):
+        """Получение списка жанров."""
+        genres = Genre.query.all()
+        return GenreSchema(many=True).dump(genres), 200
+
+    def post(self):
+        """Создание жанра, здесь мы получаем данные из запроса и создаем новую сущность в БД."""
+        data = request.get_json()
+        new_genre = Genre(**data)
+        db.session.add(new_genre)
+        db.session.commit()
+        db.session.close()
+        return "", 201
+
+
+@genres_ns.route('/<int:gid>')
+class GenreView(Resource):
+    def get(self, gid):
+        """Получение конкретного жанра по идентификатору."""
+        genre = Genre.query.get(gid)
+        return GenreSchema().dump(genre), 200
+
+    def put(self, gid):
+        """Обновление жанра по идентификатору."""
+        # Первый вариант реализации метода по обновлению жанра.         # Второй вариант реализации метода по обновлению жанра.
+        genre = db.session.query(Genre).get(gid)                        # data = request.get_json()
+        req_json = request.json                                         # genre = Genre.query.get(gid)
+        genre.name = req_json.get('name')                               # genre.name = data['name']
+        db.session.add(genre)                                           # db.session.add(genre)
+        db.session.commit()                                             # db.session.commit()
+        return "", 204                                                  # db.session.close()
+                                                                        # return "", 204
+
+    def delete(self, gid):
+        """Удаление жанра"""
+        genre = Genre.query.get(gid)
+        db.session.delete(genre)
         db.session.commit()
         return "", 204
 

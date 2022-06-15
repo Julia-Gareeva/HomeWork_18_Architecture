@@ -2,10 +2,8 @@
 
 # чтобы создать БД с данными 
 
-from flask import Flask, request
-from flask_restx import Api, Resource
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from marshmallow import Schema, fields
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -15,10 +13,10 @@ db = SQLAlchemy(app)
 
 class Movie(db.Model):
     __tablename__ = 'movie'
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255))
-    description = db.Column(db.String(255))
-    trailer = db.Column(db.String(255))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(255), unique=True, nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    trailer = db.Column(db.String(255), unique=True, nullable=False)
     year = db.Column(db.Integer)
     rating = db.Column(db.Integer)
     genre_id = db.Column(db.Integer, db.ForeignKey("genre.id"))
@@ -29,13 +27,15 @@ class Movie(db.Model):
 
 class Director(db.Model):
     __tablename__ = 'director'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255), unique=True, nullable=False)
+
 
 class Genre(db.Model):
     __tablename__ = 'genre'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255), unique=True, nullable=False)
+
 
 db.drop_all()
 db.create_all()
