@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b4bf646-8397-414d-a965-2d4887c59a29" name="Changes" comment="update from 14.06.2022">
-      <change afterPath="$PROJECT_DIR$/../.idea/PycharmProjects.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HomeWork_16_/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HomeWork_16_/.idea/HomeWork_16.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HomeWork_16_/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HomeWork_16_/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HomeWork_16_/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HomeWork_16_/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HomeWork_16_/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW_15/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeWork_15/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW_15/animal.db" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeWork_15/animal.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW_15/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeWork_15/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW_15/querys.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HomeWork_15/querys.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW_16_SQLAlchemy/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW_16_SQLAlchemy/config.py" afterDir="false" />
+    <list default="true" id="1b4bf646-8397-414d-a965-2d4887c59a29" name="Changes" comment="update from 15.06.2022">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.db" beforeDir="false" afterPath="$PROJECT_DIR$/test.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Home_Work_16/example.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +141,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="update from 14.06.2022" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/HW_17_RESTAPI$app.coverage" NAME="app Coverage Results" MODIFIED="1655274357885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/HW_17_RESTAPI$create_data.coverage" NAME="create_data Coverage Results" MODIFIED="1655275853257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/HW_17_RESTAPI$app.coverage" NAME="app Coverage Results" MODIFIED="1655376607453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/HW_17_RESTAPI$create_data.coverage" NAME="create_data Coverage Results" MODIFIED="1655276971032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
