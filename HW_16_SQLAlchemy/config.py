@@ -9,6 +9,8 @@ class Config:
     # Настройки ORM.
     SQLALCHEMY_DATABASE_URI = f'sqlite:///{DATABASE_FILE_PATH}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # JSON_AS_ASCII = False
+    # REST_JSON = {'ensure_ascii': False, 'indent': 2}
 
     # Фикстуры.
     USER_ROLES_FIXTURE_PATH = os.path.join(FIXTURE_BASE_DIR, 'user_roles.join')

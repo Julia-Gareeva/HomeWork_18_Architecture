@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/HW-14.2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/flask-easy-blank" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/flask-hard-blank" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lesson14-and-tests" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lesson16-and-tests" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lesson17-and-tests" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lesson17_project_source" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lesson18-and-tests" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pythonProject" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pythonProject/HW11" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/pythonProject/HomeWork10" vcs="Git" />
+  </component>
+</project>
