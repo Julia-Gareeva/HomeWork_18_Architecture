@@ -15,10 +15,11 @@ def get_sqlite_query(query, base=DATABASE_SOURCE, is_script=False):
             cursor.executescript(query)
         else:
             cursor.execute(query)
+    return cursor.fetchall()
 
 
 def get_all_by_id(id):
-    query = """ 
+    query = f""" 
 
 SELECT 
     animals_new.id,
@@ -44,7 +45,7 @@ SELECT
     LEFT JOIN outcome_types ON animals_new.id_outcome_type = outcome_types.id_outcome_type
     LEFT JOIN outcome_subtypes ON animals_new.id_outcome_subtype = outcome_subtypes.id_outcome_subtype
 
-    WHERE id == '{id}'
+    WHERE id == {id}
 """
 
     raw = get_sqlite_query(query, is_script=False)
@@ -56,7 +57,7 @@ SELECT
 
 
 @app.route('/<id>/')
-def get_all_by_id(id):
+def page_get_all_by_id(id):
     """ Эдпоинт выводящий инфу по ID. """
     logging.info(f'Ищем по ID: {id}')
     animal = get_all_by_id(id)
