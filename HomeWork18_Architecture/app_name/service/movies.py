@@ -2,19 +2,36 @@ from app_name.dao.movies import MovieDAO
 
 
 class MovieService:
+    """Класс с бизнес-логикой сущности фильмы."""
     def __init__(self, dao: MovieDAO):
         self.dao = dao
 
     def get_one(self, mid):
+        """Метод для получения одного фильма по ID."""
         return self.dao.get_one(mid)
 
     def get_all(self):
+        """Метод для получения всех фильмов."""
         return self.dao.get_all()
 
+    def get_directors_id(self, mid):
+        """Метод для получения фильмов с определенным режиссером по запросу типа /movies/?director_id=14"""
+        return self.dao.get_directors_id(mid)
+
+    def get_genre_id(self, mid):
+        """Метод для получения фильмов с определенным жанром по запросу типа /movies/?genre_id=10"""
+        return self.dao.get_genre_id(mid)
+
+    def get_year_movie(self, year):
+        """Метод для получения фильмов за определенный год по запросу типа /movies?year=2007"""
+        return self.dao.get_year_movie(year)
+
     def create(self, data):
+        """Метод для создания/добавления одного фильма."""
         return self.dao.create(data)
 
     def update(self, data):
+        """Метод для обновления одного фильма."""
         mid = data.get("id")
         movie = self.get_one(mid)
 
@@ -28,6 +45,7 @@ class MovieService:
         self.dao.update(movie)
 
     def update_partial(self, data):
+        """Метод для частичного обновления одного фильма."""
         mid = data.get("id")
         movie = self.get_one(mid)
 
@@ -48,4 +66,5 @@ class MovieService:
         self.dao.update(movie)
 
     def delete(self, mid):
+        """Метод для удаления одного фильма."""
         self.dao.delete(mid)
