@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from flask_restx import Resource, Namespace
 from app_name.dao.model.movies import MovieSchema
 from app_name.implemented import movie_service
@@ -24,14 +24,17 @@ class MoviesView(Resource):
         except Exception as ex:
             return ex, 404
 
-
-
     def post(self):
         """Метод для добавления фильма."""
         req_json = request.json
+        movies_id = req_json['id']   # Заголовок Location в POST на создание сущности.
         movie_service.create(req_json)
+        response = jsonify()
+        response.status_code = 201
+        response.headers["location"] = f'/{movies_id}'
+        return response
 
-        return "", 201
+        # return "", 201
 
 
 """Представления для сущности фильмы /movies/<int:mid>."""

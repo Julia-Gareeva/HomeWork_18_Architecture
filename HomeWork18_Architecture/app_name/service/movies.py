@@ -14,13 +14,13 @@ class MovieService:
         """Метод для получения всех фильмов."""
         return self.dao.get_all()
 
-    def get_directors_id(self, mid):
+    def get_directors_id(self, director_id):
         """Метод для получения фильмов с определенным режиссером по запросу типа /movies/?director_id=14"""
-        return self.dao.get_directors_id(mid)
+        return self.dao.get_directors_id(director_id)
 
-    def get_genre_id(self, mid):
+    def get_genre_id(self, genre_id):
         """Метод для получения фильмов с определенным жанром по запросу типа /movies/?genre_id=10"""
-        return self.dao.get_genre_id(mid)
+        return self.dao.get_genre_id(genre_id)
 
     def get_year_movie(self, year):
         """Метод для получения фильмов за определенный год по запросу типа /movies?year=2007"""

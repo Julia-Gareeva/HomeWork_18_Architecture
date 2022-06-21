@@ -23,9 +23,13 @@ def register_extensions(app):
     api.add_namespace(movie_ns)
     api.add_namespace(director_ns)
     api.add_namespace(genre_ns)
+    return app
 
 
 if __name__ == '__main__':
-    app_config = Config()
-    app = create_app(app_config)
-    app.run(host="localhost", port=10100, debug=True)
+    config = Config()
+    app = create_app(config)
+    # app.run()
+    app.run(debug=True)
+
+# host="localhost", port=10100,

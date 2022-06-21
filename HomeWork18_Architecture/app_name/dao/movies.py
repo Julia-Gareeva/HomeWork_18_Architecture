@@ -15,17 +15,17 @@ class MovieDAO:
         """Метод для получения всех фильмов."""
         return self.session.query(Movie).all()
 
-    def get_directors_id(self, mid):
+    def get_directors_id(self, director_id):
         """Метод для получения фильмов с определенным режиссером по запросу типа /movies/?director_id=14"""
-        return self.session.query(Movie).filter(Movie.director_id == mid)
+        return self.session.query(Movie).filter(Movie.director_id == director_id).all()
 
-    def get_genre_id(self, mid):
+    def get_genre_id(self, genre_id):
         """Метод для получения фильмов с определенным жанром по запросу типа /movies/?genre_id=10"""
-        return self.session.query(Movie).filter(Movie.genre_id == mid)
+        return self.session.query(Movie).filter(Movie.genre_id == genre_id).all()
 
     def get_year_movie(self, year):
         """Метод для получения фильмов за определенный год по запросу типа /movies?year=2007"""
-        return self.session.query(Movie).filter(Movie.year == year)
+        return self.session.query(Movie).filter(Movie.year == year).all()
 
     def create(self, data):
         """Метод для создания/добавления одного фильма."""

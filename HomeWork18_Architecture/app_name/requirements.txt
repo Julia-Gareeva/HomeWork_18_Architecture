@@ -5,7 +5,7 @@ greenlet==1.1.2
 packaging==21.3
 pip==22.1.2
 pyparsing==3.0.9
-setuptools==62.4.0
+setuptools==62.6.0
 wheel==0.37.1
 aniso8601==9.0.1
 attrs==21.4.0
@@ -19,6 +19,7 @@ jsonschema==4.6.0
 MarkupSafe==2.1.1
 pyrsistent==0.18.1
 pytz==2022.1
+schema==0.7.5
 six==1.16.0
 typing-extensions==4.2.0
 Werkzeug==2.1.2
