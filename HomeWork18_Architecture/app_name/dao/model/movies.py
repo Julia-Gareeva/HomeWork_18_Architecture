@@ -12,10 +12,10 @@ class Movie(db.Model):
     year = db.Column(db.Integer)
     rating = db.Column(db.Float, nullable=False)
 
-    genre_id = db.Column(db.Integer, db.ForeignKey("genre.id"))
+    genre_id = db.Column(db.Integer, db.ForeignKey("genres.id"))
     genre = db.relationship("Genre")
 
-    director_id = db.Column(db.Integer, db.ForeignKey("director.id"))
+    director_id = db.Column(db.Integer, db.ForeignKey("directors.id"))
     director = db.relationship("Director")
 
 
