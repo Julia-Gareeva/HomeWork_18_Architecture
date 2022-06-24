@@ -3,7 +3,7 @@ from marshmallow import Schema, fields
 
 
 class Director(db.Model):
-    __tablename__ = 'directors'
+    __tablename__ = 'director'
     """Модель класса режиссеров."""
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), unique=True, nullable=False)

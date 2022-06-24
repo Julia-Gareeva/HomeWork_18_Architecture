@@ -23,7 +23,7 @@ class MovieService:
         return self.dao.get_genre_id(genre_id)
 
     def get_year_movie(self, year):
-        """Метод для получения фильмов за определенный год по запросу типа /movies?year=2007"""
+        """Метод для получения фильмов за определенный год по запросу типа /movies/?year=2007"""
         return self.dao.get_year_movie(year)
 
     def create(self, data):

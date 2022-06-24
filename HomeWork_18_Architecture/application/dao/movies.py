@@ -24,7 +24,7 @@ class MovieDAO:
         return self.session.query(Movie).filter(Movie.genre_id == genre_id).all()
 
     def get_year_movie(self, year):
-        """Метод для получения фильмов за определенный год по запросу типа /movies?year=2007"""
+        """Метод для получения фильмов за определенный год по запросу типа /movies/?year=2007"""
         return self.session.query(Movie).filter(Movie.year == year).all()
 
     def create(self, data):
@@ -32,7 +32,7 @@ class MovieDAO:
         movie = Movie(**data)
 
         self.session.add(movie)
-        self.session.comit()
+        self.session.commit()
 
         return movie
 
